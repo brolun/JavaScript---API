@@ -3,7 +3,24 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Math Random</title>
 	</head>
-	<body></body>
+	<body>
+		<button class="random-number-btn">Vis tilfeldig tall</button>
+		<p id="random-number-txt">Her kommer det et tilfeldig tall</p>
+		<script>
+			const randomNumberBtn =
+				document.querySelector(".random-number-btn");
+			const randomNumberTxt =
+				document.querySelector("#random-number-txt");
+
+			randomNumberBtn.onclick = generateRandomNumber;
+
+			function generateRandomNumber() {
+				const randomDecimalNumber = Math.random() * 10;
+				const randomNumer = Math.floor(Math.random() * 10);
+				randomNumberTxt.innerHTML = randomNumber;
+			}
+		</script>
+	</body>
 </html>
