@@ -10,6 +10,17 @@
 			const manipulateDOM = document.createElement("h1");
 			manipulateDOM.innerHTML = "Jeg har manipulert DOM!";
 			document.body.append(manipulateDOM);
+
+			const listHeading = document.createElement("h2");
+			listHeading.innerHTML = "5 ting jeg liker med julen:";
+			let favThings = ["gaver", "juletre", "mat", "marsipan", "familie"];
+			const christmasList = document.createElement("ul");
+			for (let i = 0; i < favThings.length; i++) {
+				let listItem = document.createElement("li");
+				listItem.textContent = favThings[i];
+				christmasList.appendChild(listItem);
+			}
+			document.body.append(listHeading, christmasList);
 		</script>
 	</body>
 </html>
