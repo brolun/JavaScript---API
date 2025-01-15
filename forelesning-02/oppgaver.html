@@ -32,6 +32,17 @@
 				paragraph.innerHTML = "Hei fra JavaScript!";
 				document.body.append(paragraph);
 			}
+			const style = document.createElement("style");
+			document.head.appendChild(style);
+			style.sheet.insertRule(
+				".color-change {background-color: darkseagreen}"
+			);
+			const colorButton = document.createElement("button");
+			colorButton.textContent = "Trykk her!";
+			document.body.appendChild(colorButton);
+			colorButton.addEventListener("click", () => {
+				colorButton.classList.toggle("color-change");
+			});
 		</script>
 	</body>
 </html>
