@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.done {
+				color: green;
+				text-decoration: line-through;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Handleliste</h1>
+		<input
+			type="text"
+			placeholder="Skriv inn en vare ..."
+			id="shopping-input"
+		/>
+		<button id="add-item-btn">Legg til vare</button>
+		<ul id="shopping-list"></ul>
+		<script>
+			const shoppingInput = document.getElementById("shopping-input");
+			const addItemBtn = document.getElementById("add-item-btn");
+			const shoppingList = document.getElementById("shopping-list");
+
+			addItemBtn.addEventListener("click", addItem);
+
+			function addItem() {
+				console.log("Hei!");
+				const shoppingInputValue = shoppingInput.value;
+				console.log(shoppingInputValue);
+
+				const shoppingItem = document.createElement("li");
+				shoppingItem.innerHTML = shoppingInputValue;
+
+				const completeBtn = document.createElement("button");
+				completeBtn.textContent = "Fullført";
+				completeBtn.addEventListener("click", () => {
+					shoppingItem.classList.toggle("done");
+				});
+				const deleteBtn = document.createElement("button");
+				deleteBtn.textContent = "Slett";
+				deleteBtn.addEventListener("click", () => {
+					shoppingItem.remove();
+				});
+
+				shoppingItem.append(completeBtn, deleteBtn);
+				shoppingList.append(shoppingItem);
+			}
+		</script>
+	</body>
+</html>
