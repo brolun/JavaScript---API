@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.heading {
+				color: red;
+				font-size: 1.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			const cardContainer = document.createElement("div");
+
+			const userName = document.createElement("h1");
+			userName.innerHTML = "Amina";
+			userName.classList.add("heading");
+
+			const userAge = document.createElement("h2");
+			userAge.innerHTML = 28;
+
+			cardContainer.append(userName, userAge);
+
+			userAge.remove();
+			userName.classList.remove("heading");
+
+			// Alexander vil appende
+			document.body.append(cardContainer);
+		</script>
+	</body>
+</html>
