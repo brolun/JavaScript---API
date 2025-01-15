@@ -21,6 +21,17 @@
 				christmasList.appendChild(listItem);
 			}
 			document.body.append(listHeading, christmasList);
+
+			const jsBtn = document.createElement("button");
+			const btnTxt = document.createTextNode("Klikk på meg!");
+			jsBtn.appendChild(btnTxt);
+			document.body.appendChild(jsBtn);
+			jsBtn.addEventListener("click", sayHello);
+			function sayHello() {
+				const paragraph = document.createElement("p");
+				paragraph.innerHTML = "Hei fra JavaScript!";
+				document.body.append(paragraph);
+			}
 		</script>
 	</body>
 </html>
