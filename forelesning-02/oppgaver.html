@@ -14,7 +14,7 @@
 
 			// Oppgave 2 - Lag en liste med 5 listeelementer
 			const listHeading = document.createElement("h2");
-			listHeading.innerHTML = "5 ting jeg liker med julen:";
+			listHeading.innerText = "5 ting jeg liker med julen:";
 			let favThings = ["gaver", "juletre", "mat", "marsipan", "familie"];
 			const christmasList = document.createElement("ul");
 			for (let i = 0; i < favThings.length; i++) {
@@ -28,7 +28,7 @@
 			const jsBtn = document.createElement("button");
 			const btnTxt = document.createTextNode("Klikk på meg!");
 			jsBtn.appendChild(btnTxt);
-			document.body.appendChild(jsBtn);
+			document.body.append(jsBtn);
 			jsBtn.addEventListener("click", sayHello);
 			function sayHello() {
 				const paragraph = document.createElement("p");
@@ -38,13 +38,11 @@
 
 			// Oppgave 4 - Legge til en klasse
 			const style = document.createElement("style");
-			document.head.appendChild(style);
-			style.sheet.insertRule(
-				".color-change {background-color: darkseagreen}"
-			);
+			document.head.append(style);
+			style.sheet.insertRule(".color-change {background-color: yellow}");
 			const colorButton = document.createElement("button");
 			colorButton.textContent = "Trykk her!";
-			document.body.appendChild(colorButton);
+			document.body.append(colorButton);
 			colorButton.addEventListener("click", () => {
 				colorButton.classList.toggle("color-change");
 			});
@@ -53,7 +51,7 @@
 			const businessCard = document.createElement("div");
 			businessCard.className = "business-card";
 			style.sheet.insertRule(
-				".business-card {background-color: lightGreen; width: fit-content; border-radius: 5px; padding: 20px 30px 30px 20px}"
+				".business-card {background-color: lightGreen; width: fit-content; border-radius: 5px; padding: 20px 30px 30px 20px; margin: 40px 0}"
 			);
 
 			const userName = document.createElement("h2");
