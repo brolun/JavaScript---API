@@ -7,10 +7,12 @@
 	</head>
 	<body>
 		<script>
+			// Oppgave 1 - Lag en h1-tag
 			const manipulateDOM = document.createElement("h1");
 			manipulateDOM.innerHTML = "Jeg har manipulert DOM!";
 			document.body.append(manipulateDOM);
 
+			// Oppgave 2 - Lag en liste med 5 listeelementer
 			const listHeading = document.createElement("h2");
 			listHeading.innerHTML = "5 ting jeg liker med julen:";
 			let favThings = ["gaver", "juletre", "mat", "marsipan", "familie"];
@@ -22,6 +24,7 @@
 			}
 			document.body.append(listHeading, christmasList);
 
+			// Oppgave 3 - Lage knapper med funksjoner
 			const jsBtn = document.createElement("button");
 			const btnTxt = document.createTextNode("Klikk på meg!");
 			jsBtn.appendChild(btnTxt);
@@ -32,6 +35,8 @@
 				paragraph.innerHTML = "Hei fra JavaScript!";
 				document.body.append(paragraph);
 			}
+
+			// Oppgave 4 - Legge til en klasse
 			const style = document.createElement("style");
 			document.head.appendChild(style);
 			style.sheet.insertRule(
