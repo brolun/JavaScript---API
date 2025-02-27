@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.dark-mode {
+				background-color: black;
+				color: white;
+			}
+			.light-mode {
+				background-color: white;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Velkommen!</h1>
+		<button id="toggle-btn">Bytt modus</button>
+		<script>
+			// Sjekk og sett modus fra localStorage
+			if (localStorage.getItem("darkMode") === "enabled") {
+				document.body.classList.add("dark-mode");
+			} else {
+				document.body.classList.add("light-mode");
+			}
+
+			// Funksjon for å bytte mellom lys og mørk modus
+			function toggleBtn() {
+				document.body.classList.toggle("dark-mode");
+				document.body.classList.toggle("light-mode");
+				if (document.body.classList.contains("dark-mode")) {
+					localStorage.setItem("darkMode", "enabled");
+				} else {
+					localStorage.setItem("darkMode", "disabled");
+				}
+			}
+
+			// Legg til event listener på knappen
+			document
+				.getElementById("toggle-btn")
+				.addEventListener("click", toggleBtn);
+		</script>
+	</body>
+</html>
+
+<!-- 3️⃣ Mørk Modus-minne 🌙🔆
+
+Beskrivelse: Lag en nettside med en knapp for å bytte mellom lys og mørk modus. Nettleseren skal huske hvilken modus brukeren valgte sist gang de besøkte siden.
+
+Hint:
+
+    Endre document.body.style.backgroundColor basert på lagret verdi.
+    Bruk classList.toggle() for å skifte mellom lys og mørk modus.
+    Lagre brukerens valg i localStorage.
+ -->

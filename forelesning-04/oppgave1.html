@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1 id="welcome-message"></h1>
+		<script>
+			function askForName() {
+				let name = localStorage.getItem("userName");
+				if (!name) {
+					name = prompt("Hva er navnet ditt?");
+					if (name) {
+						localStorage.setItem("userName", name);
+						document.getElementById(
+							"welcome-message"
+						).innerText = `Velkommen, ${name}!`;
+					}
+				} else {
+					document.getElementById(
+						"welcome-message"
+					).innerText = `Velkommen tilbake, ${name}!`;
+				}
+			}
+
+			window.onload = askForName;
+		</script>
+	</body>
+</html>
+
+<!-- 1️⃣ Navn-generator
+
+Beskrivelse: Lag en enkel nettside som spør brukeren om navnet deres. Når de skriver inn navnet og trykker "Lagre", skal det lagres i localStorage. Dersom brukeren trykker refresh på siden etter å ha oppgitt navnet sitt, så skal hen ikke få spørsmål om å skrive inn navnet sitt- men navnet vedkommende skrev først skal vises frem på nettsiden automatisk. Spørsmålet om å vise navn skal altså kun komme opp, om navnet er tomt i localStorage. 
+
+Hint:
+
+    Bruk prompt() for å hente navnet.
+    Lagre det i localStorage med setItem().
+    Hent navnet ved sidens lasting med getItem() og vis det på siden.
+    Bruk if/else for å sjekke om localStorage er tomt eller ikke, og bestem deretter hvorvidt prompt skal trigges.
+ -->

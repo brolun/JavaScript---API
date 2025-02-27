@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Handleliste</h1>
+		<input type="text" id="item-input" placeholder="Legg til vare" />
+		<button id="add-item-btn">Legg til</button>
+		<ul id="shopping-list"></ul>
+
+		<script>
+			// Hent listen fra localStorage hvis den finnes
+			let items = localStorage.getItem("shopping-list")
+				? JSON.parse(localStorage.getItem("shopping-list"))
+				: [];
+			const listElement = document.getElementById("shopping-list");
+
+			// Funksjon for å vise listen
+			function displayList() {
+				listElement.innerHTML = "";
+				items.forEach((item) => {
+					const li = document.createElement("li");
+					li.textContent = item;
+					listElement.appendChild(li);
+				});
+			}
+
+			// Funksjon for å legge til vare
+			function addItem() {
+				const input = document.getElementById("item-input");
+				const item = input.value.trim();
+				if (item) {
+					items.push(item);
+					localStorage.setItem(
+						"shopping-list",
+						JSON.stringify(items)
+					);
+					input.value = "";
+					displayList();
+				}
+			}
+
+			// Legg til event listener på knappen
+			document
+				.getElementById("add-item-btn")
+				.addEventListener("click", addItem);
+
+			// Vis listen ved sidens lasting
+			displayList();
+		</script>
+	</body>
+</html>
+
+<!-- 4️⃣ Handleliste som Husker 🛒
+
+Beskrivelse: Lag en nettside hvor brukeren kan skrive inn varer til en handleliste. Listen skal lagres i localStorage, slik at den beholdes selv etter at siden er lukket.
+
+Hint:
+
+    Bruk et <input>-felt for å skrive inn varer.
+    Lagre listen som en array i localStorage ved hjelp av JSON.stringify().
+    Hent og vis listen med JSON.parse().
+ -->

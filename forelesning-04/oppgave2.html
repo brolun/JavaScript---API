@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Poengtavle: <span id="score">0</span></h1>
+		<button id="inc-btn">Klikk meg!</button>
+		<script>
+			let score = localStorage.getItem("score")
+				? parseInt(localStorage.getItem("score"))
+				: 0;
+			document.getElementById("score").innerText = score;
+
+			function increaseScore() {
+				score++;
+				localStorage.setItem("score", score);
+				document.getElementById("score").innerText = score;
+			}
+
+			document
+				.getElementById("inc-btn")
+				.addEventListener("click", increaseScore);
+		</script>
+	</body>
+</html>
+
+<!-- 2️⃣ Poengtavle for Klikk-spill 🎮
+
+Beskrivelse: Lag en enkel nettside med en knapp. Hver gang brukeren klikker på knappen, økes en poengsum som lagres i localStorage. Poengsummen skal beholdes selv om brukeren lukker og åpner siden igjen.
+
+Hint:
+
+    Bruk en <button> for å telle klikk.
+    Lagre poengsummen i localStorage.
+    Oppdater poengsummen på skjermen hver gang brukeren trykker på knappen.
+ -->
