@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="button-container"></div>
+		<script>
+			const buttonContainer = document.getElementById("button-container");
+
+			async function fetchCategories() {
+				const response = await fetch(
+					"https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
+				);
+
+				const data = await response.json();
+				console.log(data);
+				return data.drinks;
+			}
+
+			async function fetchAllDrinksFromCategory(category) {
+				const response = await fetch(
+					`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+				);
+
+				const data = await response.json();
+				console.log(data);
+				return data.drinks;
+			}
+
+			async function createButtons() {
+				const categories = await fetchCategories();
+
+				console.log(categories);
+
+				categories.forEach((category) => {
+					const button = document.createElement("button");
+					button.innerHTML = category.strCategory;
+
+					button.addEventListener("click", function () {
+						showDrinks(category.strCategory);
+					});
+
+					buttonContainer.append(button);
+				});
+			}
+
+			async function showDrinks(category) {
+				console.log("Inne i showDrinks");
+				const allDrinksFromCategory = await fetchAllDrinksFromCategory(
+					category
+				);
+
+				allDrinksFromCategory.forEach((drink) => {
+					const card = document.createElement("div");
+					const drinkName = document.createElement("h1");
+					const drinkImg = document.createElement("img");
+
+					drinkName.innerHTML = drink.strDrink;
+					drinkImg.src = drink.strDrinkThumb;
+					drinkImg.style.width = "200px";
+
+					card.append(drinkName, drinkImg);
+					document.body.append(card);
+				});
+				console.log(allDrinksFromCategory);
+			}
+
+			fetchCategories();
+			createButtons();
+		</script>
+	</body>
+</html>

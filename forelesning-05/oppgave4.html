@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const apiURL = "https://hp-api.onrender.com/api/characters";
+
+			async function fetchCharacters() {
+				try {
+					const response = await fetch(apiURL);
+					const data = await response.json();
+					console.log(data);
+
+					const buttonLabels = [
+						"Gryffindor",
+						"Slytherin",
+						"Ravenclaw",
+						"Hufflepuff",
+					];
+					buttonLabels.forEach((label) => {
+						const button = document.createElement("button");
+						button.textContent = label;
+						button.addEventListener("click", () => {
+							console.log(
+								`Du trykket på: ${label}`,
+								showCharacters(label)
+							);
+						});
+						document.body.appendChild(button);
+					});
+
+					const container = document.createElement("div");
+					container.style.display = "flex";
+					container.style.flexWrap = "wrap";
+					container.style.gap = "20px";
+					document.body.appendChild(container);
+
+					function createCharacterCard(character) {
+						const characterCard = document.createElement("div");
+						characterCard.style.width = "200px";
+						characterCard.style.padding = "20px 30px";
+						characterCard.style.margin = "20px 0";
+
+						const characterImage = document.createElement("img");
+						characterImage.style.width = "100%";
+						characterImage.src = character.image;
+
+						const characterName = document.createElement("h2");
+						characterName.style.textAlign = "center";
+						characterName.textContent = character.name;
+
+						const characterHouse = document.createElement("p");
+						characterHouse.style.textAlign = "center";
+						characterHouse.textContent = character.house;
+
+						characterCard.append(
+							characterImage,
+							characterName,
+							characterHouse
+						);
+
+						if (character.house == "Gryffindor") {
+							characterCard.style.background = "red";
+						} else if (character.house == "Slytherin") {
+							characterCard.style.background = "green";
+						} else if (character.house == "Ravenclaw") {
+							characterCard.style.background = "blue";
+						} else if (character.house == "Hufflepuff") {
+							characterCard.style.background = "yellow";
+						}
+
+						return characterCard;
+					}
+
+					function showCharacters(house) {
+						container.innerHTML = ""; // Tøm containeren hver gang det trykkes på en knapp
+						data.forEach(
+							(character) =>
+								character.house === house &&
+								container.appendChild(
+									createCharacterCard(character)
+								)
+						);
+					}
+				} catch (error) {
+					console.log("Fikk ikke hentet data!", error);
+				}
+			}
+			fetchCharacters();
+		</script>
+	</body>
+</html>
+
+<!-- 4️⃣ Yearbook
+
+Du skal nå lage en oversikt hvor brukeren kan navigere mellom husene og se alle medlemmer for hvert hus. Du skal bruke endepunktene for å hente ut medlemmer for hvert hus. Når brukeren trykker på knappen for et hus, skal kun de medlemmene for det aktuelle huset være synlige på skjermen. Kortet ha forskjellig bakgrunnsfarge, avhengig av hvilket hus eleven tilhører. -->

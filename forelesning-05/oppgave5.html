@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const apiURL = "https://apis.scrimba.com/bored/api/activity/";
+
+			async function fetchActivity() {
+				try {
+					const response = await fetch(apiURL);
+					const data = await response.json();
+					console.log(data);
+				} catch (error) {
+					console.log("Fikk ikke hentet data!", error);
+				}
+			}
+			fetchActivity();
+		</script>
+	</body>
+</html>
+
+<!-- 5️⃣ Tilfeldig aktivitet-generator
+
+Du skal nå bruke et annet API, Bored API: https://apis.scrimba.com/bored/documentation
+
+Sett deg inn i dokumentasjonen. Er responsen oppbygget på samme måte som i Harry Potter API'et? Hvordan fetcher vi fra API'et?
+
+Når du prøver å fetche API'et etter at du har lest dokumentasjonen, vil du få en feilmelding som dette:
+
+Hvorfor det? Spoiler: Dokumentasjonens fetch-request er utdatert, og du må selv tenke deg frem til hva URL'en er for å få hentet inn API'et. 😵‍💫 Tips: Se hva URL'en til nettsiden er. Den har forandret seg siden dokumentasjonen ble laget. Prøv deg frem med forskjellige kombinasjoner av URL'en til nettsiden, og URL'en gitt i dokumentasjonen.
+
+Du skal nå lage en knapp som brukeren kan trykke på. Hver gang brukeren trykker på knappen, skal de få frem et kort med en tilfeldig aktivitet fra API'et. Prøv å style nettsiden slik som i eksempelet under. -->

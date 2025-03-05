@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			characterName="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const apiURL =
+				"https://hp-api.onrender.com/api/characters/house/slytherin";
+
+			async function fetchCharacters() {
+				try {
+					const response = await fetch(apiURL);
+					const data = await response.json();
+					console.log(data);
+
+					const container = document.createElement("div");
+					container.style.display = "flex";
+					container.style.gap = "20px";
+					document.body.appendChild(container);
+
+					const staffColumn = document.createElement("div");
+					staffColumn.style.width = "50%";
+					const staffHeading = document.createElement("h2");
+					staffHeading.textContent = "Ansatte";
+					staffColumn.appendChild(staffHeading);
+					container.appendChild(staffColumn);
+
+					const studentColumn = document.createElement("div");
+					studentColumn.style.width = "50%";
+					const studentHeading = document.createElement("h2");
+					studentHeading.textContent = "Studenter";
+					studentColumn.appendChild(studentHeading);
+					container.appendChild(studentColumn);
+
+					function createCharacterCard(character) {
+						const characterCard = document.createElement("div");
+						characterCard.style.background = "green";
+						characterCard.style.padding = "20px 30px";
+						characterCard.style.margin = "20px 0";
+
+						const characterImage = document.createElement("img");
+						characterImage.style.width = "100%";
+						characterImage.src = character.image;
+
+						const characterName = document.createElement("h3");
+						characterName.style.textAlign = "center";
+						characterName.textContent = character.name;
+
+						const characterHouse = document.createElement("p");
+						characterHouse.style.textAlign = "center";
+						characterHouse.textContent = character.house;
+
+						characterCard.append(
+							characterImage,
+							characterName,
+							characterHouse
+						);
+
+						return characterCard;
+					}
+
+					data.forEach((character) => {
+						const card = createCharacterCard(character);
+						if (character.hogwartsStudent) {
+							studentColumn.appendChild(card);
+						} else if (character.hogwartsStaff) {
+							staffColumn.appendChild(card);
+						}
+					});
+				} catch (error) {
+					console.log("Fikk ikke hentet data!", error);
+				}
+			}
+
+			fetchCharacters();
+		</script>
+	</body>
+</html>
+
+<!-- 3️⃣ Skill mellom elever og ansatte
+
+Du skal nå skille mellom elever og ansatte hos Slytherin når de vises frem på nettsiden. -->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Random Drink Generator</title>
+	</head>
+	<body>
+		<script>
+			async function fetchRandomDrink() {
+				try {
+					const response = await fetch(
+						"https://www.thecocktaildb.com/api/json/v1/1/random.php"
+					);
+
+					const data = await response.json();
+
+					console.log(data);
+					return data.drinks[0];
+				} catch (error) {
+					console.log("Noe gikk galt ...", error);
+				}
+			}
+
+			async function showDrink() {
+				const randomDrink = await fetchRandomDrink();
+
+				console.log(
+					"Random drink inne i funksjonen showDrink",
+					randomDrink
+				);
+				const card = document.createElement("div");
+				const drinkName = document.createElement("h1");
+				const drinkImg = document.createElement("img");
+				const drinkCategory = document.createElement("p");
+
+				drinkName.innerHTML = randomDrink.strDrink;
+				drinkCategory.innerHTML = randomDrink.strCategory;
+				drinkImg.src = randomDrink.strDrinkThumb;
+				drinkImg.style.width = "200px";
+
+				card.append(drinkName, drinkImg, drinkCategory);
+				document.body.append(card);
+			}
+
+			fetchRandomDrink();
+			showDrink();
+		</script>
+	</body>
+</html>

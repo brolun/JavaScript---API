@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const apiURL =
+				"https://hp-api.onrender.com/api/character/af95bd8a-dfae-45bb-bc69-533860d34129";
+
+			async function fetchCharacter() {
+				try {
+					const response = await fetch(apiURL);
+					const data = await response.json();
+					console.log(data);
+
+					character = {
+						image: data[0].image,
+						name: data[0].name,
+						house: data[0].house,
+					};
+					console.log(character);
+
+					const container = document.createElement("div");
+					container.style.backgroundColor = "green";
+					container.style.width = "200px";
+					container.style.padding = "20px 30px";
+					document.body.appendChild(container);
+
+					const characterImage = document.createElement("img");
+					characterImage.style.width = "100%";
+					characterImage.src = character.image;
+
+					const characterName = document.createElement("h2");
+					characterName.style.textAlign = "center";
+					characterName.textContent = character.name;
+
+					const characterHouse = document.createElement("p");
+					characterHouse.style.textAlign = "center";
+					characterHouse.textContent = character.house;
+
+					container.append(
+						characterImage,
+						characterName,
+						characterHouse
+					);
+				} catch (error) {
+					console.log("Fikk ikke hentet data!", error);
+				}
+			}
+			fetchCharacter();
+		</script>
+	</body>
+</html>
+
+<!-- 1️⃣ Finn Draco Malfoy!
+
+Du skal jobbe med HP API slik som i modulen. Du skal nå lage en request mot API'et som henter KUN Draco Malfoy.
+
+Vis frem Draco sitt navn, bilde og hus i ett kort på nettsiden. Style kortet slik som vist på eksempelet. Alle tagger og styling skal lages i JS. -->

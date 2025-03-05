@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const apiURL =
+				"https://hp-api.onrender.com/api/characters/house/slytherin";
+
+			async function fetchCharacters() {
+				try {
+					const response = await fetch(apiURL);
+					const data = await response.json();
+					console.log(data);
+
+					data.forEach((character) => {
+						console.log(
+							character.image,
+							character.name,
+							character.house
+						);
+
+						document.body.style.display = "flex";
+						document.body.style.flexWrap = "wrap";
+						document.body.style.gap = "15px";
+
+						const container = document.createElement("div");
+						container.style.backgroundColor = "green";
+						container.style.width = "200px";
+						container.style.padding = "20px 30px";
+						document.body.appendChild(container);
+
+						const characterImage = document.createElement("img");
+						characterImage.style.width = "100%";
+						characterImage.src = character.image;
+
+						const characterName = document.createElement("h2");
+						characterName.style.textAlign = "center";
+						characterName.textContent = character.name;
+
+						const characterHouse = document.createElement("p");
+						characterHouse.style.textAlign = "center";
+						characterHouse.textContent = character.house;
+
+						container.append(
+							characterImage,
+							characterName,
+							characterHouse
+						);
+					});
+				} catch (error) {
+					console.log("Fikk ikke hentet data!", error);
+				}
+			}
+			fetchCharacters();
+		</script>
+	</body>
+</html>
+
+<!-- 2️⃣ List ut alle Slytherin-medlemmer
+
+Du skal bruke endepunktet for å liste ut alle karakterer etter hus, og finne alle karakterer fra huset "Slytherin". Merk at du må manipulere URL'en for å få dette til. -->
