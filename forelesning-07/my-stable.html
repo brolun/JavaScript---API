@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<h1>Velkommen til stallen!</h1>
+
+		<div id="horse-list"></div>
+
+		<form id="create-new-horse-form">
+			<h2>Lag din egen hest!</h2>
+			<label for="name">Navn</label>
+			<input type="text" id="name" />
+			<label for="age">Alder</label>
+			<input type="number" id="age" />
+			<button type="submit">Lag din hest</button>
+		</form>
+
+		<script type="module" src="my-stable.js"></script>
+		<script type="module" src="requests/POST.js"></script>
+	</body>
+</html>
