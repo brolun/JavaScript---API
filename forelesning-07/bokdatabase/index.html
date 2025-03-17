@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bokdatabase</title>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<h1>Bokdatabase</h1>
+		<p>Legg til en bok:</p>
+		<form id="book-form">
+			<input type="text" id="title" placeholder="Boktittel" required />
+			<input type="text" id="author" placeholder="Forfatter" />
+			<button type="submit">Legg til bok</button>
+		</form>
+		<p>Oversikt over bøkene dine:</p>
+		<div class="book-list"></div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
